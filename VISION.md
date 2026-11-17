@@ -31,29 +31,29 @@ All managed launch paths should reach the same lifecycle implementation. Launchi
 preserve the same completion and recovery guarantees as starting a session directly. A later graphical
 interface, if selected, should use that same implementation.
 
-## Managed entry points: recommendation awaiting a decision
+## Managed entry points
 
-Use `tj` as the product's explicit front door. The proposed everyday command shape is:
-
-```text
-tj run claude
-tj run codex
-```
-
-That is a proposed interface, not a claim about the installed parser. The currently documented wrapper
-syntax includes the argument separator:
+Use `tj` as the product's explicit front door. The selected everyday command shape is:
 
 ```text
-tj run -- claude
-tj run -- codex
+tj claude
+tj codex
 ```
 
-The recommendation is to make managed launches explicit and easy to use, while retaining the providers'
-executables as dependencies with their own authentication and native features. Invoking a provider directly
-does not establish a managed tj session. Product lifecycle guarantees require the managed entry point.
+These commands retain the providers' native conversation interfaces, authentication, arguments and resume
+behavior. An explicit TJ prefix makes managed ownership visible without replacing the providers' command
+names or adding a redundant launch verb. Direct `claude` and `codex` remain native provider entry points.
+The operational contracts belong to [Agent](https://github.com/tj-agents/agent#managed-sessions) and
+[CLI](https://github.com/tj-agents/cli#managed-sessions); this decision does not by itself prove installation.
 
-The final command names and argument handling need an explicit interface decision and implementation in
-[CLI](https://github.com/tj-agents/cli). This document changes no executable, shell binding or launcher.
+Every agent uses `tj message` to communicate with another session. TJ resolves the recipient and chooses
+the provider implementation, preserving native messaging capabilities and permission controls wherever
+supported. Agents do not choose a transport. A queued or stored message is distinct from recipient
+acceptance or reading; refusal or uncertainty must not trigger a permission-bypassing alternative route.
+This common messaging interface does not require replacing either provider's conversation interface.
+
+Handoffs choose their relationship explicitly: a recorded parent for continuing coordination, or full
+independence with no inherited parent or reporting obligation. Both providers support either relationship.
 
 ## What a reliable product must achieve
 
@@ -79,8 +79,10 @@ product acceptance requirements; their presence here does not establish that eve
 | A product other people can download and use | Tommy's stated destination, 17 November 2026 |
 | A proper public organization supporting that product | Tommy's stated destination, 17 November 2026 |
 | T3 Code as an inspiration | Tommy's stated comparison, 17 November 2026 |
-| `tj run claude` and `tj run codex` as the preferred interface | Recommendation in response to Tommy's question; decision pending |
-| Existing `tj run` wrapper and lifecycle mechanics | Implemented components; see their source owners for exact behavior and limitations |
+| `tj claude` and `tj codex`, retaining native conversation interfaces | Selected for the authorized managed-product overhaul |
+| Every agent uses `tj message`; TJ chooses the implementation | Tommy's explicit direction, 17 November 2026 |
+| Explicit parented and independent handoffs | Tommy's explicit requirement, 17 November 2026 |
+| Managed lifecycle implementation and installed acceptance | Owned by [the managed-product work item](https://github.com/tj-agents/.github/issues/7); source owners carry verification evidence |
 | A desktop, web, mobile or remote interface | Not selected by this vision |
 | New branding, licensing, pricing or hosted services | Not selected by this vision |
 
@@ -97,6 +99,6 @@ For the current system, use [shared reference documentation](https://github.com/
 [Core](https://github.com/tj-agents/core) owns shared workflow and engineering guidance. The repositories'
 own contracts remain authoritative for their implementation.
 
-Sources: Tommy's product-direction request on 17 November 2026; the
-[CLI usage documentation](https://github.com/tj-agents/cli#tj-run-the-agent-tabs-root-process) and
+Sources: Tommy's product-direction and messaging requests on 17 November 2026; the
+[CLI usage documentation](https://github.com/tj-agents/cli#managed-sessions) and
 [T3 Code's product description](https://github.com/pingdotgg/t3code), checked 17 November 2026.
