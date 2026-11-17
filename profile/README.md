@@ -1,16 +1,17 @@
 # tj-agents
 
-Tommy's way of working, expressed as policy, plus one small tool that runs the work-item lifecycle across
-many Claude Code and Codex agents. Everything mechanical that the hosts, git and the trackers already do,
-they do: it's a thin deterministic layer — CLI scripts plus thin trigger skills — where judgement skills
-hold the conventions and the hosts' native features do the mechanics, with harness parity (every capability
-works the same from both hosts).
+Building an installable product for running and coordinating coding agents, starting with Claude Code
+and Codex. The intended experience works with users' own accounts, repositories and selected policies.
+
+Read the [shared product vision](https://github.com/tj-agents/.github/blob/main/VISION.md) for the destination,
+the proposed managed entry points and the distinction between that direction and what is implemented today.
+The existing repositories provide the runtime, host integrations and selectable standards behind that work.
 
 ## How it fits together
 
-- **Profiles decide context.** Every repository in this org is a personal project: GitHub Issues and
-  Projects, the bot identity, and Renovate via org-level config. A repository outside this org gets a
-  a new profile, not a lifecycle change. Personal-only automation never reaches work repositories.
+- **Profiles decide context.** Projects explicitly select the policies and tracker that apply to them.
+  Personal-project preferences and employer-specific configuration stay in their selected profiles;
+  the shared runtime serves those contexts without assuming Tommy's accounts or conventions.
 - **Load what you use.** Standards are split into plugin families a repository selects — language/stack
   families (`.NET`'s `efcore`, Rust's `seaorm`/`rust-sqlx`, …) apply only where that stack is detected.
 - **Lifecycle verbs, not judgement.** `tj start`, `tj status`, `tj reload` and `tj item` are deterministic
@@ -38,7 +39,7 @@ still landing; repositories note it individually where it isn't finished yet.
 | [`template`](https://github.com/tj-agents/template) | The plugin layout and one generator every repository here is scaffolded from |
 | [`marketplace`](https://github.com/tj-agents/marketplace) | The canonical plugin roster and dependency graph both hosts install from |
 | [`renovate-config`](https://github.com/tj-agents/renovate-config) | The org-level shared Renovate configuration that keeps cross-repository pins current |
-| [`docs`](https://github.com/tj-agents/docs) | Global architecture, cross-repository designs, decisions and roadmaps |
+| [`docs`](https://github.com/tj-agents/docs) | Reference documentation for current architecture and cross-repository responsibilities |
 | `python`, `rust`, `cpp`, `dotnet`, `react`, `azure`, `nvim`, `learning`, `github-actions` | Per-stack engineering standards and learning companions, selected as plugins where that stack applies |
 
 ## Using it
