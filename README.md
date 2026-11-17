@@ -1,5 +1,10 @@
 # .github
-Organization profile for tj-agents.
+
+Organization profile and shared product direction for [tj-agents](https://github.com/tj-agents).
+
+Read [the product vision](VISION.md) when discussing what the application is being designed to become.
+It separates the intended public product from recommendations and current implementation. Agent-facing
+instructions start at [AGENTS.md](AGENTS.md).
 
 `.github/merge-policy.json` is the default merge policy for every tj-agents repository without its own:
 no approval, agents may merge once the required checks pass, and nobody pushes to the default branch
