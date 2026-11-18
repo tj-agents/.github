@@ -36,7 +36,7 @@ still landing; repositories note it individually where it isn't finished yet.
 | [`github`](https://github.com/tj-agents/github) | General-purpose GitHub access, collaboration and configuration utilities |
 | [`personal`](https://github.com/tj-agents/personal) | The personal-project profile: GitHub tracker selection, the bot GitHub App identity, `tj approve` |
 | [`work`](https://github.com/tj-agents/work) | The employer-agnostic work profile and communication workflows |
-| [`infonetica`](https://github.com/tj-agents/infonetica) *(private)* | What's specific to Tommy's current employer — Azure DevOps config, Infonetica conventions |
+| [`company`](https://github.com/tj-agents/company) *(private)* | A generic employer profile: a templated tech stack, tracker and delivery conventions to fill in per employer |
 | [`template`](https://github.com/tj-agents/template) | The plugin layout and one generator every repository here is scaffolded from |
 | [`marketplace`](https://github.com/tj-agents/marketplace) | The canonical plugin roster and dependency graph both hosts install from |
 | [`renovate-config`](https://github.com/tj-agents/renovate-config) | The org-level shared Renovate configuration that keeps cross-repository pins current |
@@ -47,5 +47,5 @@ still landing; repositories note it individually where it isn't finished yet.
 
 A repository adopts plugins from [`tj-agents/marketplace`](https://github.com/tj-agents/marketplace) in
 its own `.agents/plugins.json`; the profile it selects (`personal`, `work`, or an employer profile like
-`infonetica`) decides which tracker its work-item cards live in. See each repository's own README for its
+`company`) decides which tracker its work-item cards live in. See each repository's own README for its
 specific commands and skills.
