@@ -6,7 +6,11 @@
     }
   },
   "plugins": [
+    "agent-store@tj-agents",
+    "agent@tj-agents",
     "base@tj-agents",
+    "cli@tj-agents",
+    "docs@tj-agents",
     "engineering@tj-agents",
     "personal@tj-agents",
     "workflow@tj-agents"
